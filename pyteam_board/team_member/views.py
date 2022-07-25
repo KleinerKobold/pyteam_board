@@ -2,7 +2,7 @@ from django.shortcuts import get_object_or_404, render
 from django.http import Http404, HttpResponse
 from django.template import loader
 
-from .models import Person
+from .models import Person, Experience
 
 # Create your views here.
 def index(request):
@@ -19,3 +19,5 @@ def experience(request, person_id):
     response = "You're looking at the experiences of person %s."
     return HttpResponse(response % person_id)
 
+def add_experience(request, person_id):
+    return Http404()
