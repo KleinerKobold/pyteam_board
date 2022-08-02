@@ -1,8 +1,6 @@
-from datetime import datetime
 from tkinter import CASCADE
 from django.db import models
 from skills.models import Skill
-import datetime
 
 # Create your models here.
 class Person(models.Model):
@@ -24,11 +22,18 @@ class Experience(models.Model):
 
 class Observation(models.Model):
     name = models.CharField(max_length=200)
+    describtion = models.CharField(max_length=2000, blank=True)
     date = models.DateTimeField('observed on',auto_now_add=True, blank=True)
     persons = models.ManyToManyField(Person, through="Observed")
+
+    def __str__(self) -> str:
+        return self.name
     
 class Observed(models.Model):
     person= models.ForeignKey(Person, on_delete=models.CASCADE)
     observation = models.ForeignKey(Observation, on_delete=models.CASCADE)
+
+    def __str__(self) -> str:
+        return f"Relation ({self.person} - {self.observation})"
 
 
