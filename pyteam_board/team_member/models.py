@@ -12,6 +12,7 @@ class Person(models.Model):
 
 class Experience(models.Model):
     name_text = models.CharField(max_length=200)
+    skill = models.ForeignKey(Skill, on_delete=models.CASCADE, default=1)
     person = models.ForeignKey(Person, on_delete=models.CASCADE)    
     level = models.IntegerField(default=0)
 

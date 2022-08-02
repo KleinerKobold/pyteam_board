@@ -9,5 +9,8 @@ class Skill (models.Model):
     expert = models.CharField(max_length=1024,blank=True, null=True)
     parent = models.ForeignKey("self",on_delete=models.CASCADE, blank=True, null=True)
 
+    def skill_default(self):
+        return Skill(name="Skillname")
+    
     def __str__(self) -> str:
         return self.name
