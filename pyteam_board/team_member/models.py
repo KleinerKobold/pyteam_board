@@ -30,6 +30,7 @@ class Observation(models.Model):
         return self.name
     
 class Observed(models.Model):
+    """https://stackoverflow.com/questions/9449882/django-and-models-with-multiple-foreign-keys"""
     person= models.ForeignKey(Person, on_delete=models.CASCADE)
     observation = models.ForeignKey(Observation, on_delete=models.CASCADE)
 
