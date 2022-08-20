@@ -1,9 +1,14 @@
-{% if person_list %}
-    <ul>
-    {% for person in person_list %}
-        <li><a href="/team_member/{{ person.id }}/">{{ person.name_text }}</a></li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No team members are available.</p>
-{% endif %}
+{% extends 'team_member/base.html' %}
+
+{% block content %}
+    {% if person_list %}
+        Persons in team
+        <ul>
+        {% for person in person_list %}
+            <li><a href="/team_member/{{ person.id }}/">{{ person.name_text }}</a></li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No team members are available.</p>
+    {% endif %}
+{% endblock %}
